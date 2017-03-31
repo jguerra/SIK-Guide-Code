@@ -1,21 +1,21 @@
 /******************************************************************
  * SparkFun Inventor's Kit
  * Example sketch 04 -- MULTIPLE LEDs
- * 
+ *
  *   Make eight LEDs dance. Dance LEDs, dance!
  * This sketch was written by SparkFun Electronics,
  * with lots of help from the Arduino community.
  * Visit http://learn.sparkfun.com/products/2 for SIK information.
  * Visit http://www.arduino.cc to learn about the Arduino.
- * 
+ *
  * Version 2.0 6/2012 MDG
  * Version 2.1 9/2014 BCH
 /*****************************************************************/
 
-int ledPins[] = {2,3,4,5,6,7,8,9};   // Defines an array to store the pin numbers of the 8 LEDs. 
+int ledPins[] = {2,3,4,5,6,7,8,9};   // Defines an array to store the pin numbers of the 8 LEDs.
 // An array is like a list variable that can store multiple numbers.
 // Arrays are referenced or "indexed" with a number in the brackets [ ]. See the examples in
-// the pinMode() functions below. 
+// the pinMode() functions below.
 
 void setup()
 {
@@ -41,9 +41,9 @@ void loop()
   // lines.
 
   oneAfterAnother();  // Light up all the LEDs in turn
-  
+
   //oneOnAtATime();         // Turn on one LED at a time,
-  
+
   //pingPong();             // Light the LEDs middle to the edges
 
   //marquee();              // Chase lights like you see on signs
@@ -55,10 +55,10 @@ void loop()
 
 /******************************************************************
  * oneAfterAnother()
- * 
- * This function turns all the LEDs on, pauses, and then turns all 
- * the LEDS off. The function takes advantage of for() loops and 
- * the array to do this with minimal typing. 
+ *
+ * This function turns all the LEDs on, pauses, and then turns all
+ * the LEDS off. The function takes advantage of for() loops and
+ * the array to do this with minimal typing.
 /*****************************************************************/
 void oneAfterAnother()
 {
@@ -66,26 +66,26 @@ void oneAfterAnother()
   int delayTime = 100; // milliseconds to pause between LEDs
                        // make this smaller for faster switching
 
-  // Turn all the LEDs on:  
-  for(index = 0; index <= 7; index = index++)  // step through index from 0 to 7
+  // Turn all the LEDs on:
+  for(index = 0; index <= 7; index++)  // step through index from 0 to 7
   {
     digitalWrite(ledPins[index], HIGH);
-    delay(delayTime);                
-  }                                  
+    delay(delayTime);
+  }
 
-  // Turn all the LEDs off: 
-  for(index = 7; index >= 0; index = index--)  // step through index from 7 to 0
+  // Turn all the LEDs off:
+  for(index = 7; index >= 0; index--)  // step through index from 7 to 0
   {
     digitalWrite(ledPins[index], LOW);
     delay(delayTime);
-  }               
+  }
 }
- 
+
 /*****************************************************************
  * oneOnAtATime()
- * 
+ *
  * This function will step through the LEDs, lighting only one at
- * a time. It turns each LED ON and then OFF before going to the 
+ * a time. It turns each LED ON and then OFF before going to the
  * next LED.
 /****************************************************************/
 
@@ -94,15 +94,15 @@ void oneOnAtATime()
   int index;
   int delayTime = 100; // milliseconds to pause between LEDs
                        // make this smaller for faster switching
-  
-  for(index = 0; index <= 7; index = index ++)   // step through the LEDs, from 0 to 7
+
+  for(index = 0; index <= 7; index++)   // step through the LEDs, from 0 to 7
   {
     digitalWrite(ledPins[index], HIGH);  // turn LED on
     delay(delayTime);                    // pause to slow down
     digitalWrite(ledPins[index], LOW);   // turn LED off
   }
 
-  for(index = 7; index >= 0; index = index --)   // step through the LEDs, from 7 to 0
+  for(index = 7; index >= 0; index--)   // step through the LEDs, from 7 to 0
   {
     digitalWrite(ledPins[index], HIGH);  // turn LED on
     delay(delayTime);                    // pause to slow down
@@ -110,11 +110,11 @@ void oneOnAtATime()
   }
 }
 
- 
+
 /*****************************************************************
  * pingPong()
- * 
- * This function will step through the LEDs, lighting one at at 
+ *
+ * This function will step through the LEDs, lighting one at at
  * time in both directions. There is no delay between the LED off
  * and turning on the next LED. This creates a smooth pattern for
  * the LED pattern.
@@ -123,15 +123,15 @@ void pingPong()
 {
   int index;
   int delayTime = 100; // milliseconds to pause between LEDs
-   
-  for(index = 0; index <= 7; index = index ++)   // step through the LEDs, from 0 to 7
+
+  for(index = 0; index <= 7; index++)   // step through the LEDs, from 0 to 7
   {
     digitalWrite(ledPins[index], HIGH);  // turn LED on
     delay(delayTime);                    // pause to slow down
     digitalWrite(ledPins[index], LOW);   // turn LED off
   }
- 
-  for(index = 7; index >= 0; index = index --)   // step through the LEDs, from 7 to 0
+
+  for(index = 7; index >= 0; index--)   // step through the LEDs, from 7 to 0
   {
     digitalWrite(ledPins[index], HIGH);  // turn LED on
     delay(delayTime);                    // pause to slow down
@@ -141,17 +141,17 @@ void pingPong()
 
 /*****************************************************************
  * marquee()
- * 
+ *
  * This function will mimic "chase lights" like those around signs.
 /****************************************************************/
 void marquee()
 {
   int index;
   int delayTime = 200; // milliseconds to pause between LEDs
- 
+
   // Step through the first four LEDs
   // (We'll light up one in the lower 4 and one in the upper 4)
-  
+
   for(index = 0; index <= 3; index++) // Step from 0 to 3
   {
     digitalWrite(ledPins[index], HIGH);    // Turn a LED on
@@ -164,7 +164,7 @@ void marquee()
 
 /*****************************************************************
  * randomLED()
- * 
+ *
  * This function will turn on random LEDs. Can you modify it so it
  * also lights them for random times?
 /****************************************************************/
@@ -172,10 +172,10 @@ void randomLED()
 {
   int index;
   int delayTime;
-  
+
   index = random(8);	// pick a random number between 0 and 7
   delayTime = 100;
-	
+
   digitalWrite(ledPins[index], HIGH);  // turn LED on
   delay(delayTime);                    // pause to slow down
   digitalWrite(ledPins[index], LOW);   // turn LED off
